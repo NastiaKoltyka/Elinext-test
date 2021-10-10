@@ -3,6 +3,7 @@ const router = express.Router();
 const config = require('../../config/app');
 
 const passport = require('passport');
+const { user } = require('../../config/app');
 
 module.exports = () => {
 
@@ -27,8 +28,6 @@ module.exports = () => {
                 });
             })
             (req, res);
-
     });
-
     return router;
 }

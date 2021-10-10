@@ -1,9 +1,9 @@
 <div class="login-password">
     <h1>Login</h1>
-    <form >
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" ngModel>
-        <label for="floatingInput">Username</label>
+        <input type="text" class="form-control" id="floatingInput" placeholder="Login" name="login" ngModel>
+        <label for="floatingInput">Login</label>
       </div>
       <div class="form-floating">
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" ngModel>

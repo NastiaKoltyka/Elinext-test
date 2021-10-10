@@ -1,1 +1,13 @@
-<p>datails-page works!</p>
+<div class="user-details-content">
+  <p><b>Name:</b> {{user.name}}</p>
+  <p><b>Email:</b> {{user.email}}</p>
+  <p><b>Password:</b> ********</p>
+  <p><b>Phone:</b> {{user.phone}}</p>
+  <p><b>Date of birth:</b> {{user.date_of_birth}}</p>
+  <p><b>Education:</b> {{user.education}}</p>
+  <div class="buttons">
+    <button class="btn btn-warning" (click)="editUser()" *ngIf="authService.user?.is_admin">Edit</button>
+    <button class="btn btn-dark" (click)="deleteUser()" *ngIf="authService.user?.is_admin">Delete</button>
+    <button class="btn btn-success" (click)="back()">Back</button>
+  </div>
+</div>

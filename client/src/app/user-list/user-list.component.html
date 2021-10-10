@@ -1,1 +1,20 @@
-<p>user-list works!</p>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Date of birth</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" [routerLink]="['/users', user.id]">
+        <td >{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.date_of_birth | date:'dd.MM.yyyy HH:mm'}}</td>
+        <td>{{user.phone}}</td>
+      </tr>
+    </tbody>
+    <button class="btn btn-info" (click)="createUser()" *ngIf="authService.user?.is_admin">Create</button>
+  </table>
+  

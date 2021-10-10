@@ -18,7 +18,6 @@ passport.use(new LocalStrategy({
                     message: 'Incorrect email or password.'
                 });
             }
-
             return done(null, user, {
                 message: 'Logged In Successfully'
             });
