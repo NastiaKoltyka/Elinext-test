@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { LoginComponent } from './login/login.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { DatailsPageComponent } from './datails-page/datails-page.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DatailsPageComponent } from './datails-page/datails-page.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,8 +5,10 @@ import { HttpService } from '../core/http.sevice';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from '@angular/router';
 
+
 import { User } from '../classes/user';
-import { AuthService} from '../core/auth.sevice'
+import { AuthService} from '../core/auth.sevice';
+
 @Component({
   selector: 'app-datails-page',
   templateUrl: './datails-page.component.html',

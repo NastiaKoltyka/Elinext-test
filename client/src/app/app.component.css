@@ -45,4 +45,8 @@
 .content {
   height: calc(100vh - 34px);
 }
+
+mat-spinner {
+  margin: 100px auto;
+}
 /*# sourceMappingURL=app.component.css.map */

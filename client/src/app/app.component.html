@@ -3,7 +3,8 @@
   <p>User system</p>
 </div>
 <div class="content">
-    <router-outlet></router-outlet>
+  <mat-spinner *ngIf="spinner"></mat-spinner>
+    <router-outlet *ngIf="!spinner"></router-outlet>
 </div>
 
 <div class="footer"> All rights reserved.</div>

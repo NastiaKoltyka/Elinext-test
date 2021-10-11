@@ -10,6 +10,11 @@ import { AuthService } from './core/auth.sevice';
 })
 export class AppComponent {
   title = 'test';
+  spinner:boolean;
   constructor(public router: Router, public authService: AuthService ) { 
+    this.spinner=true;
+    setTimeout(() => {
+      this.spinner=false
+    }, 20000);
   }
 }
