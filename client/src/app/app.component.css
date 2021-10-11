@@ -1,1 +1,48 @@
-/* No CSS *//*# sourceMappingURL=app.component.css.map */
+.header {
+  font-size: 34px;
+  border-bottom: 1px solid black;
+  height: 50px;
+  line-height: 50px;
+  color: #0074d9;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header div {
+  font-weight: normal;
+  position: absolute;
+  right: 70px;
+  font-size: 20px;
+}
+
+.footer {
+  border-top: 1px solid black;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  height: calc(100vh - 34px);
+}
+/*# sourceMappingURL=app.component.css.map */

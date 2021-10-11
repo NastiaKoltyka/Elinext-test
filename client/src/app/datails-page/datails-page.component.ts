@@ -20,7 +20,7 @@ export class DatailsPageComponent implements OnInit {
   constructor(public authService: AuthService, private httpService: HttpService, private route: ActivatedRoute,  private toastr: ToastrService, private router: Router) { 
     this.id = 0
     this.routeSubscription = route.params.subscribe(params => this.id = params['id']);
-    this.user = new User('','','');
+    this.user = new User('','','', [], '', []);
   }
 
   ngOnInit(): void {

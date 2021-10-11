@@ -1,0 +1,23 @@
+.user-details-content {
+  width: 500px;
+  margin-left: 50px;
+  min-height: calc(100vh - 100px);
+  padding-top: 20px;
+}
+
+.buttons {
+  width: 300px;
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.btn {
+  width: 90px;
+  height: 50px;
+}
+/*# sourceMappingURL=datails-page.component.css.map */

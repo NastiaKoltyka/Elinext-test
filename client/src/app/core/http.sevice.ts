@@ -25,7 +25,7 @@ export class HttpService {
     return this.http.delete<DeleteSuccess>(`${this.host}/users/${userId}`);
   }
   createUser(user: User): Observable<void> {
-    return this.http.post<void>(`${this.host}/users/`, user);
+    return this.http.post<void>(`${this.host}/users`, user);
   }
   updateUser(userId: number, user: User): Observable<void> {
     return this.http.put<void>(`${this.host}/users/${userId}`, user);

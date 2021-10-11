@@ -9,7 +9,7 @@ const getAllUsers = (page, pageSize) => {
                     name,
                     email,
                     password,
-                    phone, 
+                    phones, 
                     date_of_birth,
                     education,
                     is_admin,
@@ -19,7 +19,7 @@ const getAllUsers = (page, pageSize) => {
                     name,
                     email,
                     password,
-                    phone, 
+                    phones, 
                     date_of_birth,
                     education,
                     is_admin,
@@ -67,6 +67,10 @@ const createUser = (newUser) => {
             name: newUser.name,
             email: newUser.email,
             password: newUser.password,
+            phones:newUser.phones,
+            date_of_birth:newUser.date_of_birth,
+            education:newUser.education
+
         };
         return User.createUser(user);
 
@@ -85,7 +89,7 @@ const updateUser = (userId, user) => {
             name: user.name,
             email: user.email,
             password: user.password,
-            phone: user.phone, 
+            phones: user.phones, 
             date_of_birth: user.date_of_birth,
             education: user.education,
         };

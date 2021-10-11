@@ -16,12 +16,12 @@ const getConnection = () => {
       name varchar(255) not null,
       email varchar(255) not null,
       password varchar(255) not null,
-      phone varchar(255),
+      phones varchar(255),
       date_of_birth varchar(255),
       education varchar(255),
       is_admin BOOLEAN not null);`;
 
-  const createAdmin = `INSERT INTO users (name, email, password, phone, date_of_birth, education, is_admin )
+  const createAdmin = `INSERT INTO users (name, email, password, phones, date_of_birth, education, is_admin )
   VALUES('admin', 'admin@gmail.com', 'admin','+3805575781', '12/12/12', 'LNU', true );`;
 
   return connection.query(createUsersTable)
@@ -30,9 +30,8 @@ const getConnection = () => {
         .then(usersCountResult => {
           if (usersCountResult[0][0].Count == 0) {
             connection.query(createAdmin).then(res => {
-                return connection;
-              }
-            )
+              return connection;
+            })
           } else {
             return connection;
           }
@@ -46,7 +45,10 @@ const getAll = () => {
       return connection.query("SELECT * FROM users")
         .then(result => {
           connection.close()
-          return result[0];
+          let users = result[0];
+          // todo: create separate table for storing phones instead of this hack
+          users.forEach(user => user.phones = (user.phones  + '').split(','));
+          return users;
         });
     }).catch(err => {
       return Promise.reject({
@@ -69,8 +71,9 @@ const getUser = (userId) => {
               description: 'Specified user doesn\'t exist'
             });
           }
+          // todo: create separate table for storing phones instead of this hack
+          user.phones = (user.phones  + '').split(',');
           return user;
-          
         })
     }).catch(err => {
       if (typeof err.code == 'number') {
@@ -95,6 +98,8 @@ const getUserByCredentials = (email, password) => {
           if (!user) {
             return null;
           }
+          // todo: create separate table for storing phones instead of this hack
+          user.phones = (user.phones  + '').split(',');
           return user
         })
     }).catch(err => {
@@ -108,12 +113,12 @@ const getUserByCredentials = (email, password) => {
 const createUser = (user) => {
   return getConnection()
     .then(connection => {
-      const sql = `INSERT INTO users(name, email, password, is_admin ) VALUES (?,?,?,?)`;
-      return connection.query(sql, [user.name, user.email, user.password, false])
-      .then(userResult => {
-        connection.close();
-        return userResult;
-      })
+      const sql = `INSERT INTO users(name, email, password,phones,date_of_birth,education, is_admin ) VALUES (?,?,?,?,?,?,?)`;
+      return connection.query(sql, [user.name, user.email, user.password, user.phones.join(','), user.date_of_birth, user.education, false])
+        .then(userResult => {
+          connection.close();
+          return userResult;
+        })
     }).catch(err => {
       return Promise.reject({
         code: 500,
@@ -127,14 +132,15 @@ const updateUser = (userId, user) => {
     .then(connection => {
       return connection.query('SELECT COUNT(*) as Count FROM users WHERE id=?', [userId]).then(checkUserResult => {
         if (checkUserResult[0][0].Count == 0) {
+          connection.close();
           return Promise.reject({
             code: 404,
             description: 'Specified user doesn\'t exist'
           });
-          
+
         } else {
-          const sql = `UPDATE users SET name=?, email=?, password=?, phone=?, date_of_birth=?, education=? WHERE id=? `;
-          const data = [user.name, user.email, user.password, user.phone, user.date_of_birth, user.education, userId];
+          const sql = `UPDATE users SET name=?, email=?, password=?, phones=?, date_of_birth=?, education=? WHERE id=? `;
+          const data = [user.name, user.email, user.password, user.phones.join(','), user.date_of_birth, user.education, userId];
           return connection.query(sql, data)
             .then(userResult => {
               connection.close();

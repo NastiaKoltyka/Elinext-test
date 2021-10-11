@@ -1,4 +1,4 @@
-`<form [formGroup]="myForm"  (ngSubmit)="submit()">
+`<form [formGroup]="myForm"  >
     <div class="form-group">
         <label>Name</label>
         <input class="form-control" name="name" formControlName="userName"/>
@@ -24,13 +24,19 @@
             Wrong password
         </div>
     </div>
-    <div class="form-group">
-        <label>Phone</label>
-        <input class="form-control"  name="phone" formControlName="userPhone" />
-        <div class="alert alert-danger"
-            *ngIf="myForm.controls['userPhone'].invalid && myForm.controls['userPhone'].touched">
-            Wrong phone
+        <div formArrayName="phones">
+            <div class="form-group" *ngFor="let phone of getFormsControls()['controls']; let i = index" >
+                <label>Phone</label>
+                <input class="form-control" formControlName="{{i}}" />
+            </div>
         </div>
+        <div class="form-group">
+            <button class="btn btn-primary" (click)="addPhone()">
+                Add phone
+            </button>
+            <button class="btn btn-danger" (click)="deletePhone()">
+                Delete phone
+            </button>
     </div>
     <div class="form-group">
         <label>Date of birth</label>
@@ -49,8 +55,11 @@
         </div>
     </div>
     <div class="form-group">
-        <button class="btn btn-default" [disabled]="myForm.invalid">
-            Create
+        <button class="btn btn-warning" (click)="submit()">
+            Submit
+        </button>
+        <button class="btn btn-success" (click)="backPage()">
+            Back
         </button>
     </div>
 </form>`
