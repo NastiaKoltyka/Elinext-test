@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { HttpService } from '../core/http.sevice';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 import { User } from '../classes/user';
@@ -18,9 +19,12 @@ import { AuthService} from '../core/auth.sevice';
 export class DatailsPageComponent implements OnInit {
   id: number;
   user:User;
+  language:string;
   private routeSubscription: Subscription;
-  constructor(public authService: AuthService, private httpService: HttpService, private route: ActivatedRoute,  private toastr: ToastrService, private router: Router) { 
-    this.id = 0
+  constructor(public authService: AuthService,private translate: TranslateService,  private httpService: HttpService, private route: ActivatedRoute,  private toastr: ToastrService, private router: Router) { 
+    this.id = 0;
+    this.language=""
+    console.log(this.language)
     this.routeSubscription = route.params.subscribe(params => this.id = params['id']);
     this.user = new User('','','', [], '', []);
   }
@@ -43,7 +47,8 @@ export class DatailsPageComponent implements OnInit {
     });
   }
   editUser(){
-    this.router.navigate(['/user-edit', this.id]);
+    this.language=this.translate.getDefaultLang()
+    this.router.navigate(['/user-edit/', this.id, this.language]);
   }
   back(){
     this.router.navigate(['/users-list']);

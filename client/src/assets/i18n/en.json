@@ -1,0 +1,16 @@
+{
+    "title": "UserSystem",
+    "footer":"All rights reserved.",
+    "login": "Login",
+    "password":"Password",
+    "name":"Name",
+    "phone":"Phone",
+    "date_of_birth":"Date of birth",
+    "education":"Education",
+    "edit":"Edit",
+    "delete":"Delete",
+    "back":"Back",
+    "create":"Create",
+    "question":"Are you sure?",
+    "close":"Close"
+}

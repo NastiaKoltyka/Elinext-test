@@ -1,10 +1,10 @@
 <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Date of birth</th>
-        <th>Phone</th>
+        <th>{{'name'|translate}}</th>
+        <th>{{'email'|translate}}</th>
+        <th>{{'date_of_birth'|translate}}</th>
+        <th>{{'phone'|translate}}</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +15,6 @@
         <td>{{user.phones}}</td>
       </tr>
     </tbody>
-    <button class="btn btn-info" (click)="createUser()" *ngIf="authService.user?.is_admin">Create</button>
+    <button class="btn btn-info" (click)="createUser()" *ngIf="authService.user?.is_admin">{{'create'|translate}}</button>
   </table>
   

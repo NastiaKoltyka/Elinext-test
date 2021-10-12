@@ -1,0 +1,18 @@
+{
+    "title": "Système utilisateur",
+    "footer":"Tous les droits sont réservés.",
+    "login": "Connexion",
+    "password":"Le mot de passe",
+
+    "name": "Nom",
+    "phone":"Téléphone",
+    "date_of_birth": "Date de naissance",
+    "education":"Education",
+    "edit": "Éditer",
+    "delete": "Effacer",
+    "back": "Arrière",
+    "create":"Créer",
+    "question":"Es-tu sûr?",
+    "close":"Proche"
+
+}

@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { User } from '../classes/user';
 import { AuthService } from '../core/auth.sevice';
 import { HttpService } from '../core/http.sevice';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-create-edit-user',
   templateUrl: './create-edit-user.component.html',
@@ -21,7 +22,15 @@ export class CreateEditUserComponent implements OnInit {
   datePattern=/[0-9]{2}-[0-9]{2}-[0-9]{4}/;
   phonePattern=/^\+[0-9]{1,}/;
   private routeSubscription: Subscription;
-  constructor(private router: Router, public authService: AuthService, private httpService: HttpService, private route: ActivatedRoute, private toastr: ToastrService,private location: Location) {
+  constructor(private translate: TranslateService, private router: Router, public authService: AuthService, private httpService: HttpService, private route: ActivatedRoute, private toastr: ToastrService,private location: Location) {
+   
+    if(this.router.url.includes('fr')){
+    this.translate.use('fr');
+   }
+   else{
+    translate.setDefaultLang('en');
+   }
+
     this.id = 0;
     this.routeSubscription = route.params.subscribe(params => this.id = params['id']);
     this.myForm = new FormGroup({

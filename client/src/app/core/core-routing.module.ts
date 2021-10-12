@@ -12,12 +12,12 @@ const routes: Routes = [
   { path: 'users/:id', component: DatailsPageComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
-    path: 'user-edit/:id', loadChildren: () => import('../create-edit-user/create-edit-user.module').then(m => m.CreateEditUserModule), canActivate: [AuthGuard],
+    path: 'user-edit/:id/:lang', loadChildren: () => import('../create-edit-user/create-edit-user.module').then(m => m.CreateEditUserModule), canActivate: [AuthGuard],
     data: {
       role: true
     }
   },
-    { path: 'user-create', loadChildren: () => import('../create-edit-user/create-edit-user.module').then(m => m.CreateEditUserModule), canActivate: [AuthGuard],
+    { path: 'user-create/:lang', loadChildren: () => import('../create-edit-user/create-edit-user.module').then(m => m.CreateEditUserModule), canActivate: [AuthGuard],
     data: {
       role: true
     }

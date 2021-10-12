@@ -1,15 +1,15 @@
 <div class="login-password">
-    <h1>Login</h1>
+    <h1>{{'login'|translate}}</h1>
     <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <div class="form-floating mb-3">
         <input type="text" class="form-control" id="floatingInput" placeholder="Login" name="login" ngModel>
-        <label for="floatingInput">Login</label>
+        <label for="floatingInput">{{'login'|translate}}</label>
       </div>
       <div class="form-floating">
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" ngModel>
-        <label for="floatingPassword">Password</label>
+        <label for="floatingPassword">{{'password'|translate}}</label>
       </div>
-      <button type="submit" class="btn btn-primary btn-lg">LOGIN</button>
+      <button type="submit" class="btn btn-primary btn-lg">{{'login'|translate}}</button>
     </form>
   </div>
   

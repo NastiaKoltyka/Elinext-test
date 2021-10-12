@@ -7,6 +7,7 @@ import { HttpService } from '../core/http.sevice';
 import { User } from '../classes/user';
 import { AuthService } from '../core/auth.sevice';
 import {Router} from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -17,9 +18,10 @@ import {Router} from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
-
-  constructor(private httpService: HttpService, private toastr: ToastrService, public authService: AuthService, private router: Router) {
-    this.refreshUsers()
+  language:string;
+  constructor(private httpService: HttpService, private translate: TranslateService, private toastr: ToastrService, public authService: AuthService, private router: Router) {
+    this.refreshUsers();
+    this.language="";
    }
 
   ngOnInit(): void {
@@ -34,7 +36,9 @@ export class UserListComponent implements OnInit {
     });
   }
   createUser(){
-    this.router.navigate(['/user-create']);
+    this.language=this.translate.getDefaultLang()
+    console.log(this.language)
+      this.router.navigate([`/user-create/${this.language}` ]);
   }
 
 }

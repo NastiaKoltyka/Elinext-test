@@ -1,11 +1,14 @@
 <div class="block">
-<div class="header">
-  <p>User system</p>
-</div>
-<div class="content">
-  <mat-spinner *ngIf="spinner"></mat-spinner>
+  <div class="header" translate>
+    <p>{{'title'|translate}}</p>
+    <div>
+      <button class="btn btn-link" (click)="switchLanguage('en')">en</button>
+      <button class="btn btn-link" (click)="switchLanguage('fr')">fr</button>
+    </div>
+  </div>
+  <div class="content">
+    <mat-spinner *ngIf="spinner"></mat-spinner>
     <router-outlet *ngIf="!spinner"></router-outlet>
-</div>
-
-<div class="footer"> All rights reserved.</div>
+  </div>
+  <div class="footer"> {{'footer'|translate}}</div>
 </div>

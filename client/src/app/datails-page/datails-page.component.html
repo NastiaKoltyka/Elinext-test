@@ -1,29 +1,29 @@
 <div class="user-details-content">
-  <p><b>Name:</b> {{user.name}}</p>
-  <p><b>Email:</b> {{user.email}}</p>
-  <p><b>Password:</b> ********</p>
-  <p><b>Phone:</b> {{user.phones}}</p>
-  <p><b>Date of birth:</b> {{user.date_of_birth}}</p>
-  <p><b>Education:</b> {{user.education}}</p>
+  <p><b>{{'name'|translate}}:</b> {{user.name}}</p>
+  <p><b>{{'email'|translate}}:</b> {{user.email}}</p>
+  <p><b>{{'password'|translate}}:</b> ********</p>
+  <p><b>{{'phone'|translate}}:</b> {{user.phones}}</p>
+  <p><b>{{'date_of_birth'|translate}}:</b> {{user.date_of_birth}}</p>
+  <p><b>{{'education'|translate}}:</b> {{user.education}}</p>
   <div class="buttons">
-    <button class="btn btn-warning" (click)="editUser()" *ngIf="authService.user?.is_admin">Edit</button>
-    <button class="btn btn-dark" *ngIf="authService.user?.is_admin" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
-    <button class="btn btn-success" (click)="back()">Back</button>
+    <button class="btn btn-warning" (click)="editUser()" *ngIf="authService.user?.is_admin">{{'edit'|translate}}</button>
+    <button class="btn btn-dark" *ngIf="authService.user?.is_admin" data-bs-toggle="modal" data-bs-target="#exampleModal">{{'delete'|translate}}</button>
+    <button class="btn btn-success" (click)="back()">{{'back'|translate}}</button>
   </div>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete user</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{'delete'|translate}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are you sure?
+        {{'question'|translate}}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="deleteUser()"  data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{'close'|translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="deleteUser()"  data-bs-toggle="modal" data-bs-target="#exampleModal">{{'delete'|translate}}</button>
       </div>
     </div>
   </div>
