@@ -17,20 +17,23 @@ export class CreateEditUserComponent implements OnInit {
   myForm!: FormGroup;
   id: number;
   user: User = new User('','','', [], '', []);
+  emailPattern=/[A-Za-z0-9\.%№\$\-#]{1,}@[A-Za-z0-9]{1,}\.[A-Za-z0-9]{1,}/;
+  datePattern=/[0-9]{2}-[0-9]{2}-[0-9]{4}/;
+  phonePattern=/^\+[0-9]{1,}/;
   private routeSubscription: Subscription;
   constructor(private router: Router, public authService: AuthService, private httpService: HttpService, private route: ActivatedRoute, private toastr: ToastrService,private location: Location) {
-    this.id = 0
+    this.id = 0;
     this.routeSubscription = route.params.subscribe(params => this.id = params['id']);
     this.myForm = new FormGroup({
-      "userName": new FormControl('', Validators.required),
+      "userName": new FormControl('', [Validators.required, Validators.minLength(1)]),
       "userEmail": new FormControl('', [
         Validators.required,
-        Validators.email
+        Validators.pattern(this.emailPattern)
       ]),
-      "userPassword": new FormControl('', Validators.pattern("[0-9]{10}")),
-      "phones": new FormArray([new FormControl('', Validators.pattern("[0-9]{10}"))]),
-      "date": new FormControl('', Validators.pattern("[0-9]{10}")),
-      "education": new FormControl('', Validators.pattern("[0-9]{10}")),
+      "userPassword": new FormControl('',[ Validators.required, Validators.minLength(5)]),
+      "phones": new FormArray([new FormControl('',Validators.pattern(this.phonePattern))]),
+      "date": new FormControl('', Validators.pattern(this.datePattern)),
+      "education": new FormControl('', Validators.minLength(1)),
     });
 
     if (this.router.url !== '/user-create') {
@@ -57,8 +60,6 @@ export class CreateEditUserComponent implements OnInit {
 
   }
   submit() {
-    console.log(this.myForm.value);
-
     if (this.router.url == '/user-create') {
       let user: User = new User(this.myForm.value.userName,this.myForm.value.userEmail,this.myForm.value.userPassword,this.myForm.value.phones,this.myForm.value.date,this.myForm.value.education );
       this.httpService.createUser(user).subscribe(() => {

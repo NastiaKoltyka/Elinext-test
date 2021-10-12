@@ -1,19 +1,18 @@
-`<form [formGroup]="myForm"  >
+`<form [formGroup]="myForm">
     <div class="form-group">
         <label>Name</label>
-        <input class="form-control" name="name" formControlName="userName"/>
+        <input class="form-control" name="name" formControlName="userName" />
         <div class="alert alert-danger"
             *ngIf="myForm.controls['userName'].invalid && myForm.controls['userName'].touched">
-            Wrong name
+            Wrong name, minimum length 1 characters
         </div>
     </div>
     <div class="form-group">
         <label>Email</label>
         <input class="form-control" name="email" formControlName="userEmail" />
-          
         <div class="alert alert-danger"
             *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">
-            Wrong email
+            Write correct email
         </div>
     </div>
     <div class="form-group">
@@ -21,37 +20,39 @@
         <input class="form-control" type="password" name="password" formControlName="userPassword" />
         <div class="alert alert-danger"
             *ngIf="myForm.controls['userPassword'].invalid && myForm.controls['userPassword'].touched">
-            Wrong password
+            Wrong password, minimum length one characters
         </div>
     </div>
-        <div formArrayName="phones">
-            <div class="form-group" *ngFor="let phone of getFormsControls()['controls']; let i = index" >
-                <label>Phone</label>
-                <input class="form-control" formControlName="{{i}}" />
-            </div>
+    <div formArrayName="phones">
+        <div class="form-group" *ngFor="let phone of getFormsControls()['controls']; let i = index">
+            <label>Phone</label>
+            <input class="form-control" formControlName="{{i}}" />
         </div>
-        <div class="form-group">
-            <button class="btn btn-primary" (click)="addPhone()">
-                Add phone
-            </button>
-            <button class="btn btn-danger" (click)="deletePhone()">
-                Delete phone
-            </button>
+        <div class="alert alert-danger" *ngIf="myForm.controls['phones'].invalid && myForm.controls['phones'].touched">
+            Wrong phone, example: +3805555555
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" (click)="addPhone()">
+            Add phone
+        </button>
+        <button class="btn btn-danger" (click)="deletePhone()">
+            Delete phone
+        </button>
     </div>
     <div class="form-group">
         <label>Date of birth</label>
-        <input class="form-control"  name="date" formControlName="date" />
-        <div class="alert alert-danger"
-            *ngIf="myForm.controls['date'].invalid && myForm.controls['date'].touched">
-            Date
+        <input class="form-control" name="date" formControlName="date" />
+        <div class="alert alert-danger" *ngIf="myForm.controls['date'].invalid && myForm.controls['date'].touched">
+            Date example - dd-mm-yyyy
         </div>
     </div>
     <div class="form-group">
         <label>Education</label>
-        <input class="form-control"  name="education" formControlName="education" />
+        <input class="form-control" name="education" formControlName="education" />
         <div class="alert alert-danger"
             *ngIf="myForm.controls['education'].invalid && myForm.controls['education'].touched">
-            Education
+            Wrong education, minimum length one characters
         </div>
     </div>
     <div class="form-group">
@@ -62,4 +63,5 @@
             Back
         </button>
     </div>
-</form>`
+
+</form>
